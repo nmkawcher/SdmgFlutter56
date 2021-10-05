@@ -1,10 +1,135 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MyApp());
+}
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'title',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: HomePage(),
+
+    );
+  }
+}
+
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _count=0;
+  void _incremntCount(){
+   setState(() {
+     _count++;
+   });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("hello"),
+      ),
+     body: Center(
+       child: Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+         children: [
+           Text(
+             "click",style:TextStyle(fontSize: 20)
+           ),
+           Text("$_count")
+         ],
+       ),
+     ),
+      
+     floatingActionButton: FloatingActionButton(
+       onPressed: (){
+         _incremntCount();
+         },
+       child: Icon(Icons.add),
+       
+     ),
+    );
+    
+  }
+}
+
+
+
+
+
+/*import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'material title',
+      theme: ThemeData(
+        primarySwatch: Colors.blue
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _count=0;//2
+  void _incrmentCount(){
+    setState(() {
+      _count++;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Flutter Demo Home Page"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Click",style: TextStyle(color: Colors.black,fontSize: 20),),
+            Text("$_count",style: TextStyle(color: Colors.black,fontSize: 30),)
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){_incrmentCount();},
+        child: Icon(Icons.add),
+      ),
+    );
+
+  }
+}*/
+
+
+
+/*class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -110,4 +235,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
+}*/
