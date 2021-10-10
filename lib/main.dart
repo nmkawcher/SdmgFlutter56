@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main(){
@@ -13,14 +11,85 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'title',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomePage(),
+      home: MyHome(),
 
     );
   }
 }
 
+class MyHome extends StatelessWidget {
+  const MyHome({Key? key}) : super(key: key);
 
-class HomePage extends StatefulWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Simple UI Design"),),
+      body: Center(
+        child: Column(
+          children: [
+            Icon(Icons.home,size: 200,),
+            SizedBox(height: 10.0,),
+            Text("Heading Text",style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold),),
+            SizedBox(height: 10.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  flex: 1,
+                    child: Container(
+                      child: Text("test1"),
+                    )
+                ),
+                Expanded(
+                  flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.deepPurple
+                      ),
+                      child: Text("test2"),
+                    )
+                )
+              ],
+            ),
+            SizedBox(height: 10.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(flex:1,
+                    child: SizedBox(
+                      height: 70,
+                        child: Card(
+                            child: Text(
+                                "Text3")
+                        )
+                    )
+                ),
+                Text("Text4")
+              ],
+            ),
+            SizedBox(height: 10.0,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Text5"),
+                Text("Text6")
+              ],
+            ),
+            SizedBox(height: 10.0,),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+/*class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -62,7 +131,7 @@ class _HomePageState extends State<HomePage> {
     );
     
   }
-}
+}*/
 
 
 
