@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:sdmg_flutter56/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:sdmg_flutter56/listview_builder_example.dart';
+import 'package:sdmg_flutter56/product_page_design.dart';
 import 'package:sdmg_flutter56/simple_list_view_example.dart';
 
 
@@ -18,7 +19,7 @@ void main() {
        theme: ThemeData(
          primarySwatch: Colors.purple
        ),
-       home: MyListViewBuilder(),
+       home: ProductDesignPage(),
      );
    }
  }
@@ -75,7 +76,8 @@ class HomePage extends StatelessWidget {
                  )
                ),
              )
-             *//* Container(
+             */
+/* Container(
                 height: 300,
                 width: 300,
                 decoration: BoxDecoration(
@@ -104,11 +106,13 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.purple
                     ),
-                  )),*//*
+                  )),*/
+/*
 
             ],
           ),
-          *//*child: Stack(
+          */
+/*child: Stack(
             alignment: Alignment.center,
             children: [
               Container(
@@ -127,7 +131,8 @@ class HomePage extends StatelessWidget {
                 color: Colors.cyanAccent,
               )
             ],
-          ),*//*
+          ),*/
+/*
         ),
       ),
     );
