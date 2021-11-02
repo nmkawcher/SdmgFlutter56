@@ -2,13 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:sdmg_flutter56/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:sdmg_flutter56/listview_builder_example.dart';
+import 'package:sdmg_flutter56/name_routes/page_one.dart';
 import 'package:sdmg_flutter56/product_page_design.dart';
+import 'package:sdmg_flutter56/routes.dart';
+import 'package:sdmg_flutter56/routes_practise/first_screen.dart';
 import 'package:sdmg_flutter56/simple_list_view_example.dart';
 
 
 void main() {
   runApp(MyApp());
 }
+
+
  class MyApp extends StatelessWidget {
    const MyApp({Key? key}) : super(key: key);
 
@@ -19,7 +24,9 @@ void main() {
        theme: ThemeData(
          primarySwatch: Colors.purple
        ),
-       home: ProductDesignPage(),
+      /* home: FirstScreen(),*/
+       initialRoute:PageOne.routesName,
+       routes:routes,
      );
    }
  }
