@@ -16,5 +16,4 @@ final Map<String,WidgetBuilder>routes={
   PageFour.routesName:(context)=>PageFour(),
   MyTextFieldExample.routesName:(context)=>MyTextFieldExample(),
  MediaQueryExample.routesName:(context)=>MediaQueryExample(),
- ApiExample.routesName:(context)=>ApiExample(),
 };

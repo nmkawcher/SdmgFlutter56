@@ -1,22 +1,99 @@
 import 'package:flutter/cupertino.dart';
 import 'package:sdmg_flutter56/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:sdmg_flutter56/http_example/http_example.dart';
-import 'package:sdmg_flutter56/listview_builder_example.dart';
-import 'package:sdmg_flutter56/media_query/media_query_example.dart';
-import 'package:sdmg_flutter56/name_routes/page_one.dart';
-import 'package:sdmg_flutter56/product_page_design.dart';
-import 'package:sdmg_flutter56/routes.dart';
-import 'package:sdmg_flutter56/routes_practise/first_screen.dart';
-import 'package:sdmg_flutter56/simple_list_view_example.dart';
-import 'package:sdmg_flutter56/text_field/text_field_example.dart';
+import 'dart:async';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(MyApp());
+Future<Album> fetchAlbum() async {
+ /* final response = await http
+      .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+*/
+  final response = await http
+      .get(Uri.parse('api.openweathermap.org/data/2.5/weather?q=London&appid={API key}'));
+
+  if (response.statusCode == 200) {
+    return Album.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load album');
+  }
 }
 
 
+class Album {
+  final int userId;
+  final int id;
+  final String title;
+
+  Album({
+    required this.userId,
+    required this.id,
+    required this.title,
+  });
+
+  factory Album.fromJson(Map<String, dynamic> json) {
+    return Album(
+      userId: json['userId'],
+      id: json['id'],
+      title: json['title'],
+    );
+  }
+}
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late Future<Album> futureAlbum;
+
+  @override
+  void initState() {
+    super.initState();
+    futureAlbum = fetchAlbum();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Fetch Data Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Fetch Data Example'),
+        ),
+        body: Center(
+          child: FutureBuilder<Album>(
+            future: futureAlbum,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data!.title);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*void main() {
+  runApp(MyApp());
+}
  class MyApp extends StatelessWidget {
    const MyApp({Key? key}) : super(key: key);
 
@@ -27,12 +104,12 @@ void main() {
        theme: ThemeData(
          primarySwatch: Colors.purple
        ),
-      // home: MyTextFieldExample(),
-       initialRoute:ApiExample.routesName,
-       routes:routes,
+       home: HttpExample(),
+      *//* initialRoute:ApiExample.routesName,
+       routes:routes,*//*
      );
    }
- }
+ }*/
 
 /*class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
